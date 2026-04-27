@@ -1,9 +1,9 @@
 backend:
   name: github
-  repo: neo-era/lavipco1          # ← Giữ nguyên tên repo của em
+  repo: neo-era/lavipco1          # ← Đổi thành tên repo chính xác của em nếu khác
   branch: main
 
-site_url: https://neo-era.github.io/lavipco1   # ← RẤT QUAN TRỌNG
+site_url: https://neo-era.github.io/lavipco1   # ← Quan trọng nhất
 
 media_folder: "public/media"
 public_folder: "/media"
