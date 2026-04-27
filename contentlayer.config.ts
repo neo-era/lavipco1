@@ -1,263 +1,52 @@
 import { defineDocumentType, makeSource } from 'contentlayer2/source-files'
 
-const Page = defineDocumentType(() => ({
-  name: 'Page',
-  filePathPattern: `page/*.md`,
-  contentType: 'markdown',
+export const Project = defineDocumentType(() => ({
+  name: 'Project',
+  filePathPattern: 'projects/**/*.md',
   fields: {
-    slug: {
-      type: 'string',
-    },
-    title: {
-      type: 'string',
-      required: true,
-    },
-    description: {
-      type: 'string',
-      required: false,
-    },
-    gallery: {
-      type: 'list',
-      of: { type: 'string' },
-    },
-  },
-  computedFields: {
-    slug: {
-      type: 'string',
-      resolve: (doc) => doc._raw.sourceFileName.replace(/\.md/, ''),
-    },
+    title: { type: 'string', required: true },
+    value: { type: 'string' },
+    client: { type: 'string' },
+    year: { type: 'string' },
+    location: { type: 'string' },
+    description: { type: 'string' },
+    image: { type: 'string' },
   },
 }))
 
-const Blog = defineDocumentType(() => ({
-  name: 'Blog',
-  filePathPattern: `blog/*.md`,
-  contentType: 'markdown',
+export const Service = defineDocumentType(() => ({
+  name: 'Service',
+  filePathPattern: 'services/**/*.md',
   fields: {
-    title: {
-      type: 'string',
-      required: true,
-    },
-    date: {
-      type: 'date',
-      required: false,
-    },
-    description: {
-      type: 'string',
-      required: false,
-    },
-    tags: {
-      type: 'json',
-      required: false,
-    },
-    templateKey: {
-      type: 'string',
-      required: true,
-    },
-    featured: {
-      type: 'boolean',
-      required: false,
-    },
-  },
-  computedFields: {
-    slug: {
-      type: 'string',
-      resolve: (doc) => doc._raw.sourceFileName.replace(/\.md/, ''),
-    },
+    title: { type: 'string', required: true },
+    description: { type: 'string' },
   },
 }))
 
-const Inspiration = defineDocumentType(() => ({
-  name: 'Inspiration',
-  filePathPattern: `inspiration/*.mdx`,
-  contentType: 'mdx',
+export const TeamMember = defineDocumentType(() => ({
+  name: 'TeamMember',
+  filePathPattern: 'team/**/*.md',
   fields: {
-    title: {
-      type: 'string',
-      required: true,
-    },
-    date: {
-      type: 'date',
-      required: false,
-    },
-    description: {
-      type: 'string',
-      required: false,
-    },
-    tags: {
-      type: 'json',
-      required: false,
-    },
-    image: {
-      type: 'string',
-      required: true,
-    },
-    templateKey: {
-      type: 'string',
-      required: true,
-    },
-    featured: {
-      type: 'boolean',
-      required: false,
-    },
-  },
-  computedFields: {
-    slug: {
-      type: 'string',
-      resolve: (doc) => doc._raw.sourceFileName.replace(/\.mdx/, ''),
-    },
+    name: { type: 'string', required: true },
+    position: { type: 'string' },
+    specialty: { type: 'string' },
+    experience: { type: 'string' },
+    photo: { type: 'string' },
   },
 }))
 
-const Podcasts = defineDocumentType(() => ({
-  name: 'Podcasts',
-  filePathPattern: `podcasts/*.md`,
-  contentType: 'markdown',
+export const Certificate = defineDocumentType(() => ({
+  name: 'Certificate',
+  filePathPattern: 'certificates/**/*.md',
   fields: {
-    title: {
-      type: 'string',
-      required: true,
-    },
-    date: {
-      type: 'date',
-      required: false,
-    },
-    description: {
-      type: 'string',
-      required: false,
-    },
-    tags: {
-      type: 'json',
-      required: false,
-    },
-    link: {
-      type: 'string',
-      required: false,
-    },
-    image: {
-      type: 'string',
-      required: true,
-    },
-    templateKey: {
-      type: 'string',
-      required: true,
-    },
-    featured: {
-      type: 'boolean',
-      required: false,
-    },
-  },
-  computedFields: {
-    slug: {
-      type: 'string',
-      resolve: (doc) => doc._raw.sourceFileName.replace(/\.md/, ''),
-    },
-  },
-}))
-
-const Tools = defineDocumentType(() => ({
-  name: 'Tools',
-  filePathPattern: `tools/*.md`,
-  contentType: 'markdown',
-  fields: {
-    title: {
-      type: 'string',
-      required: true,
-    },
-    date: {
-      type: 'date',
-      required: false,
-    },
-    description: {
-      type: 'string',
-      required: false,
-    },
-    tags: {
-      type: 'json',
-      required: false,
-    },
-    link: {
-      type: 'string',
-      required: false,
-    },
-    image: {
-      type: 'string',
-      required: true,
-    },
-    templateKey: {
-      type: 'string',
-      required: true,
-    },
-    featured: {
-      type: 'boolean',
-      required: false,
-    },
-  },
-  computedFields: {
-    slug: {
-      type: 'string',
-      resolve: (doc) => doc._raw.sourceFileName.replace(/\.md/, ''),
-    },
-  },
-}))
-
-const Resources = defineDocumentType(() => ({
-  name: 'Resources',
-  filePathPattern: `resources/*.md`,
-  contentType: 'markdown',
-  fields: {
-    title: {
-      type: 'string',
-      required: true,
-    },
-    date: {
-      type: 'date',
-      required: false,
-    },
-    description: {
-      type: 'string',
-      required: false,
-    },
-    tags: {
-      type: 'json',
-      required: false,
-    },
-    link: {
-      type: 'string',
-      required: false,
-    },
-    image: {
-      type: 'string',
-      required: true,
-    },
-    templateKey: {
-      type: 'string',
-      required: true,
-    },
-    featured: {
-      type: 'boolean',
-      required: false,
-    },
-  },
-  computedFields: {
-    slug: {
-      type: 'string',
-      resolve: (doc) => doc._raw.sourceFileName.replace(/\.md/, ''),
-    },
+    title: { type: 'string', required: true },
+    number: { type: 'string' },
+    date: { type: 'string' },
+    image: { type: 'string' },
   },
 }))
 
 export default makeSource({
   contentDirPath: 'content',
-  documentTypes: [Page, Blog, Inspiration, Podcasts, Tools, Resources],
-  disableImportAliasWarning: true,
+  documentTypes: [Project, Service, TeamMember, Certificate],
 })
-export const Project = defineDocumentType(() => ({
-  name: 'Project', // Tên này sẽ tạo ra 'allProjects'
-  filePathPattern: 'projects/**/*.md',
-  fields: {
-    title: { type: 'string', required: true },
-    date: { type: 'date', required: true },
-    // các fields khác...
-  },
-}))

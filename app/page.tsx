@@ -1,5 +1,11 @@
 import Link from "next/link";
 
+// Import dữ liệu động từ Decap CMS / Contentlayer
+import { allProjects } from "contentlayer/generated";
+import { allServices } from "contentlayer/generated";
+import { allTeamMembers } from "contentlayer/generated";     // ← Sửa thành allTeamMembers
+import { allCertificates } from "contentlayer/generated";
+
 export default function Home() {
   return (
     <>
@@ -45,57 +51,74 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 1. DỰ ÁN TIÊU BIỂU (tạm tĩnh) */}
+      {/* 1. DỰ ÁN TIÊU BIỂU - Động từ CMS */}
       <section id="du-an" className="py-20 bg-white">
         <div className="px-6 mx-auto max-w-7xl">
           <h2 className="mb-12 text-4xl font-bold text-center text-blue-900">Dự án tiêu biểu</h2>
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {/* Em có thể thay bằng dữ liệu thật từ CMS sau */}
-            <div className="overflow-hidden border shadow-sm rounded-3xl">
-              <div className="flex items-center justify-center h-56 text-4xl bg-gray-200">📸</div>
-              <div className="p-6">
-                <h3 className="font-semibold">Thi công hệ thống chiếu sáng đường Mỹ Phước Tân Vạn</h3>
-                <p className="text-orange-500">997.618.050 VNĐ • 2018</p>
+            {allProjects.map((project) => (
+              <div key={project._id} className="overflow-hidden transition border shadow-sm rounded-3xl hover:shadow-xl">
+                {project.image && <img src={project.image} alt={project.title} className="object-cover w-full h-56" />}
+                <div className="p-6">
+                  <h3 className="mb-1 text-lg font-semibold">{project.title}</h3>
+                  <p className="font-medium text-orange-500">{project.value}</p>
+                  <p className="mt-2 text-sm text-gray-500">{project.client} • {project.year}</p>
+                </div>
               </div>
-            </div>
-            {/* Thêm các dự án khác tương tự nếu muốn */}
+            ))}
           </div>
         </div>
       </section>
 
-      {/* 2. LĨNH VỰC HOẠT ĐỘNG (tạm tĩnh) */}
+      {/* 2. LĨNH VỰC HOẠT ĐỘNG - Động từ CMS */}
       <section id="linh-vuc" className="py-20 bg-gray-50">
         <div className="px-6 mx-auto max-w-7xl">
           <h2 className="mb-12 text-4xl font-bold text-center text-blue-900">Lĩnh vực hoạt động</h2>
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-            <div className="p-8 bg-white shadow-sm rounded-3xl">Chiếu sáng công cộng</div>
-            <div className="p-8 bg-white shadow-sm rounded-3xl">Đèn tín hiệu giao thông</div>
-            <div className="p-8 bg-white shadow-sm rounded-3xl">Camera an ninh</div>
-            <div className="p-8 bg-white shadow-sm rounded-3xl">Năng lượng mặt trời</div>
+            {allServices.map((service) => (
+              <div key={service._id} className="p-8 bg-white shadow-sm rounded-3xl">
+                <h3 className="mb-3 text-xl font-semibold">{service.title}</h3>
+                <p className="text-sm text-gray-600 line-clamp-4">{service.description}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* 3. NHÂN SỰ (tạm tĩnh) */}
+      {/* 3. NHÂN SỰ - Động từ CMS */}
       <section id="nhan-su" className="py-20 bg-white">
         <div className="px-6 mx-auto max-w-7xl">
           <h2 className="mb-12 text-4xl font-bold text-center text-blue-900">Nhân sự chủ chốt</h2>
           <div className="grid gap-8 md:grid-cols-3">
-            <div className="text-center">Mai Trung Hiếu - Phó Giám đốc</div>
-            <div className="text-center">Phạm Văn Út Hậu - Trưởng phòng Kỹ thuật</div>
-            <div className="text-center">Nguyễn Văn Huy - Phó phòng Kỹ thuật</div>
+            {allTeamMembers.map((person) => (
+              <div key={person._id} className="text-center">
+                {person.photo && (
+                  <div className="w-32 h-32 mx-auto overflow-hidden border-4 border-white shadow-md rounded-2xl">
+                    <img src={person.photo} alt={person.name} className="object-cover w-full h-full" />
+                  </div>
+                )}
+                <h3 className="mt-6 font-semibold">{person.name}</h3>
+                <p className="text-orange-500">{person.position}</p>
+                <p className="text-sm text-gray-500">{person.specialty} • {person.experience}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* 4. CHỨNG CHỈ (tạm tĩnh) */}
+      {/* 4. CHỨNG CHỈ - Động từ CMS */}
       <section id="chung-chi" className="py-20 bg-gray-50">
         <div className="px-6 mx-auto max-w-7xl">
           <h2 className="mb-12 text-4xl font-bold text-center text-blue-900">Hồ sơ pháp lý & Chứng chỉ</h2>
-          <div className="grid gap-8 md:grid-cols-3">
-            <div className="p-6 bg-white shadow-sm rounded-3xl">Giấy chứng nhận đăng ký doanh nghiệp</div>
-            <div className="p-6 bg-white shadow-sm rounded-3xl">Chứng chỉ năng lực hoạt động xây dựng</div>
-            <div className="p-6 bg-white shadow-sm rounded-3xl">Chứng chỉ bồi dưỡng nghiệp vụ</div>
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {allCertificates.map((cert) => (
+              <div key={cert._id} className="p-6 bg-white shadow-sm rounded-3xl">
+                <h3 className="font-semibold">{cert.title}</h3>
+                <p className="text-sm text-gray-500">Số hiệu: {cert.number}</p>
+                <p className="text-sm text-gray-500">Ngày cấp: {cert.date}</p>
+                {cert.image && <img src={cert.image} alt={cert.title} className="mt-4 rounded-2xl" />}
+              </div>
+            ))}
           </div>
         </div>
       </section>
