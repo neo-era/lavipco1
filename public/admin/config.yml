@@ -1,71 +1,53 @@
 backend:
   name: github
-  repo: neo-era/lavipco1   # ← THAY TÊN USERNAME CỦA BẠN VÀO ĐÂY
+  repo: neo-era/lavipco1          # ← Giữ nguyên tên repo của em
   branch: main
+
+site_url: https://neo-era.github.io/lavipco1   # ← RẤT QUAN TRỌNG
 
 media_folder: "public/media"
 public_folder: "/media"
 
 collections:
-  - name: "pages"
-    label: "Trang tĩnh"
-    files:
-      - label: "Trang chủ"
-        name: "home"
-        file: "content/pages/home.md"
-        fields:
-          - {label: "Tiêu đề", name: "title", widget: "string"}
-          - {label: "Nội dung", name: "body", widget: "markdown"}
-
   - name: "projects"
     label: "Dự án tiêu biểu"
     folder: "content/projects"
     create: true
-    slug: "{{year}}-{{slug}}"
+    slug: "{{slug}}"
     fields:
-      - {label: "Tiêu đề dự án", name: "title", widget: "string", required: true}
-      - {label: "Giá trị hợp đồng", name: "value", widget: "string"}
-      - {label: "Chủ đầu tư / Nhà thầu chính", name: "client", widget: "string"}
-      - {label: "Năm thực hiện", name: "year", widget: "string"}
+      - {label: "Tiêu đề", name: "title", widget: "string", required: true}
+      - {label: "Giá trị", name: "value", widget: "string"}
+      - {label: "Chủ đầu tư", name: "client", widget: "string"}
+      - {label: "Năm", name: "year", widget: "string"}
       - {label: "Địa điểm", name: "location", widget: "string"}
       - {label: "Mô tả ngắn", name: "description", widget: "text"}
-      - {label: "Nội dung chi tiết", name: "body", widget: "markdown"}
-      - {label: "Hình ảnh đại diện", name: "image", widget: "image"}
+      - {label: "Hình ảnh", name: "image", widget: "image"}
 
   - name: "services"
     label: "Lĩnh vực hoạt động"
     folder: "content/services"
     create: true
     fields:
-      - {label: "Tên lĩnh vực", name: "title", widget: "string"}
+      - {label: "Tên lĩnh vực", name: "title", widget: "string", required: true}
       - {label: "Mô tả", name: "description", widget: "markdown"}
-
-  - name: "certificates"
-    label: "Hồ sơ pháp lý & Chứng chỉ"
-    folder: "content/certificates"
-    create: true
-    fields:
-      - {label: "Tên chứng chỉ", name: "title", widget: "string"}
-      - {label: "Số hiệu", name: "number", widget: "string"}
-      - {label: "Ngày cấp", name: "date", widget: "string"}
-      - {label: "Hình ảnh scan", name: "image", widget: "image"}
 
   - name: "team"
     label: "Nhân sự"
     folder: "content/team"
     create: true
     fields:
-      - {label: "Họ và tên", name: "name", widget: "string"}
+      - {label: "Họ tên", name: "name", widget: "string", required: true}
       - {label: "Chức vụ", name: "position", widget: "string"}
       - {label: "Chuyên môn", name: "specialty", widget: "string"}
       - {label: "Kinh nghiệm", name: "experience", widget: "string"}
       - {label: "Ảnh cá nhân", name: "photo", widget: "image"}
 
-  - name: "company"
-    label: "Thông tin công ty"
-    files:
-      - label: "Giới thiệu công ty"
-        name: "about"
-        file: "content/company/about.md"
-        fields:
-          - {label: "Nội dung", name: "body", widget: "markdown"}
+  - name: "certificates"
+    label: "Chứng chỉ & Hồ sơ pháp lý"
+    folder: "content/certificates"
+    create: true
+    fields:
+      - {label: "Tên chứng chỉ", name: "title", widget: "string", required: true}
+      - {label: "Số hiệu", name: "number", widget: "string"}
+      - {label: "Ngày cấp", name: "date", widget: "string"}
+      - {label: "Hình ảnh scan", name: "image", widget: "image"}
