@@ -1,7 +1,6 @@
 {
   "name": "design-code.tips",
   "version": "0.1.0",
-  "type": "module",
   "private": true,
   "scripts": {
     "dev": "concurrently \"contentlayer2 dev\" \"next dev\" \"next-image-export-optimizer\"",
@@ -12,7 +11,7 @@
   "dependencies": {
     "@heroicons/react": "^2.1.5",
     "framer-motion": "^11.3.30",
-    "next": "^14.2.6",
+    "next": "^16.2.4",
     "next-image-export-optimizer": "^1.12.3",
     "prismjs": "^1.29.0",
     "react": "^18.2.0",

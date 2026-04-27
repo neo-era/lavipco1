@@ -252,3 +252,12 @@ export default makeSource({
   documentTypes: [Page, Blog, Inspiration, Podcasts, Tools, Resources],
   disableImportAliasWarning: true,
 })
+export const Project = defineDocumentType(() => ({
+  name: 'Project', // Tên này sẽ tạo ra 'allProjects'
+  filePathPattern: 'projects/**/*.md',
+  fields: {
+    title: { type: 'string', required: true },
+    date: { type: 'date', required: true },
+    // các fields khác...
+  },
+}))
