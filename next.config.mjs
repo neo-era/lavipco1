@@ -1,3 +1,5 @@
+import { withContentlayer } from 'next-contentlayer2'
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
@@ -7,4 +9,4 @@ const nextConfig = {
   transpilePackages: ["next-image-export-optimizer"],
 }
 
-export default nextConfig
+export default withContentlayer(nextConfig)
