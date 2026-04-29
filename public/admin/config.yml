@@ -3,7 +3,7 @@ backend:
   repo: neo-era/lavipco1          # Tên repo GitHub: username/repo-name
   branch: main
   auth_type: pkce                  # Xác thực PKCE - không cần server trung gian
-  app_id: YOUR_GITHUB_OAUTH_APP_CLIENT_ID   # ← Thay bằng Client ID từ bước hướng dẫn bên dưới
+  app_id: Ov23liYZ61JWYGI0tlzZ   # ← Thay bằng Client ID từ bước hướng dẫn bên dưới
 
 site_url: https://neo-era.github.io/lavipco1
 
