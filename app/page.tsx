@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 import Link from "next/link";
 
 // Import dữ liệu động từ Decap CMS / Contentlayer
@@ -135,5 +136,16 @@ export default function Home() {
         </div>
       </footer>
     </>
+=======
+export default function Home() {
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-blue-900 to-blue-700 flex items-center justify-center text-white">
+      <div className="text-center">
+        <h1 className="text-8xl font-bold tracking-tighter">LAVIPCO</h1>
+        <p className="mt-6 text-3xl text-orange-400">Website đã chạy thành công!</p>
+        <p className="mt-10 text-xl">Chúc mừng bạn – Trang chủ đã hoạt động 🎉</p>
+      </div>
+    </div>
+>>>>>>> Stashed changes
   );
 }
