@@ -1,5 +1,3 @@
-import { withContentlayer } from 'next-contentlayer2'
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
@@ -7,6 +5,7 @@ const nextConfig = {
     unoptimized: true
   },
   transpilePackages: ["next-image-export-optimizer"],
+  turbopack: {},
 }
 
-export default withContentlayer(nextConfig)
+export default nextConfig
